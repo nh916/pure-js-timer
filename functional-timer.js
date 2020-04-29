@@ -8,7 +8,7 @@ function set_timer(timer) {
     This_time = timer + 1;
 }
 
- // sets Id 
+// sets Id
 function set_id(idGiven) {
     ID = idGiven;
 }
@@ -31,7 +31,7 @@ function timeIt() {
 
 function stopAndClear() {
     let currentTimer = document.getElementById(ID);
-    currentTimer.innerText = ;
+    currentTimer.innerText = "";
     clearInterval(theinterval);
 }
 
@@ -50,22 +50,21 @@ function start_timer(amount, id) {
 
 // converts seconds to minutes. For example 65 seconds to 1:05
 function convert_seconds(s) {
-    var min = Math.floor(s  60);
+    var min = Math.floor(s / 60);
     var seconds = s % 60;
 
-    if (min  1 && seconds  10) {
-        return min +  + 0 + seconds;
+    if (min > 1 && seconds < 10) {
+        return min + ":" + "0" + seconds;
     }
 
     else{
         return seconds;
     }
 
-     else if (min  1 && seconds ) {
-         return min +  + seconds;
-     }
+    // else if (min > 1 && seconds ) {
+    //     return min + ":" + seconds;
+    // }
 }
-
 
 /*pauses the clock on the second that its said
 checks every second to see if its at the pausing point and once it is it clears the interval*/
