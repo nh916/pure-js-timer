@@ -41,7 +41,7 @@ Takes the amount that the developer wants the timer to run for
 takes the ID that the developer wants to put the timer inside of
 when the timer hits 0 it stops itself*/
 
-function start_timer(amount, id) {
+function start_timer(amount, id = "timer") {
     set_timer(amount);
     set_id(id);
     timeIt();
