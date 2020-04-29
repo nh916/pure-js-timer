@@ -1,0 +1,23 @@
+{
+  "name": "functional-timer",
+  "version": "1.0.0",
+  "description": "Simple Javascript Timer made with functions",
+  "main": "functional-timer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nh916/functional-timer.git"
+  },
+  "keywords": [
+    "timer",
+    "functional-timer"
+  ],
+  "author": "Navid Hariri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nh916/functional-timer/issues"
+  },
+  "homepage": "https://github.com/nh916/functional-timer#readme"
+}
