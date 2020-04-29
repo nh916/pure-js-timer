@@ -8,6 +8,7 @@ The code can be refactored to be improved and more efficient, I just have not ha
 
 Feel free to contribute to it, and make it better. Looking forward to seeing others using it and contributing to it!
 
+*MIT License*
 
 # functions
 
