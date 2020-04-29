@@ -21,6 +21,11 @@ By defualt the ID is set to timer but it can be overwritten to any other ID the 
 amount is the amount the developer wants the timer to run for. Example 30 seconds
 ### Example:
 ```javascript
+      start_timer(90);
+```
+*or*
+
+```javascript
       start_timer(90, "timer");
 ```
 
