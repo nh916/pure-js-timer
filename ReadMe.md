@@ -12,8 +12,11 @@ Feel free to contribute to it, and make it better. Looking forward to seeing oth
 
 # functions
 
-## start_timer(amount, id);
+## ```start_timer(amount)``` *or* ```start_timer(amount, id = "timer")```
+
+
 **takes an (int timer amount, String id)**
+By defualt the ID is set to timer but it can be overwritten to any other ID the developer wants to use
 
 amount is the amount the developer wants the timer to run for. Example 30 seconds
 ### Example:
@@ -27,13 +30,13 @@ id is the id of the element that the developer wants to put the timer int
       <div id="timer">30</div>
 ```
 
-## convert_seconds(s);
+## ```convert_seconds(s);```
 **converts seconds to minutes. For example 65 seconds to 1:05**
 
-## pause(point_to_pause);
+## ```pause(point_to_pause);```
 **takes a second time where the developer wants the timer to pause on.**
 
-## stopAndClear();
+## ```stopAndClear();```
 **It takes nothing and whenever it is called it stops the timer and erases the timer from screen by replacing inside of the div with empty string ""**
 
 # Demo
