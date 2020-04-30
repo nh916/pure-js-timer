@@ -1,10 +1,16 @@
+/*
+@fileOverview This is a simple timer written in pure JavaScript ES6 or ES 2015
+*/
 let thisTime;
 let theInterval;
 let ID;
 // let its0;
 
 /* sets the amount of thisTime and adds 1 to it
-for the user to see that it started from 30 and not 29 */
+for the user to see that it started from 30 and not 29
+@param {timer} num The amount the timer should run for
+@return null/none
+*/
 function setTimer(timer) {
   thisTime = timer + 1;
 }
