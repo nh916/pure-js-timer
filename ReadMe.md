@@ -32,7 +32,7 @@ amount is the amount the developer wants the timer to run for. Example 30 second
 id is the id of the element that the developer wants to put the timer int
 ### Example:
 ```html
-      <div id="timer">30</div>
+      <div id="timer"></div>
 ```
 
 ## ```convert_seconds(s);```
