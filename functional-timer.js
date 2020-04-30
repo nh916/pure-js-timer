@@ -4,7 +4,8 @@
 let thisTime;
 let theInterval;
 let ID;
-// let its0;
+let minutesAndSeconds = false
+let pausePoint;
 
 /* sets the amount of thisTime and adds 1 to it
 for the user to see that it started from 30 and not 29
@@ -20,6 +21,22 @@ function setID(idGiven) {
   ID = idGiven;
 }
 
+function setMinutesAndSeconds(choice) {
+  if (choice === true) {
+   minutesAndSeconds = true
+  }
+  else if (choice === false) {
+    minutesAndSeconds = false
+  }
+  else {
+    console.error("setMinutesAndSeconds has a boolean parameter")
+  }
+}
+
+function setPausePoint(thePausePoint) {
+  pausePoint = thePausePoint;
+}
+
 /* uses the id from global var
  subtracts one from the given timer
  then replaces the id
@@ -28,16 +45,22 @@ function setID(idGiven) {
 function timeIt() {
   thisTime--;
   const timer = document.getElementById(ID);
-  timer.innerText = thisTime.toString();
 
   if (thisTime === 0) {
     clearInterval(theInterval);
+  }
+
+  if (minutesAndSeconds) {
+    timer.textContent = convertSeconds();
+  }
+  else {
+    timer.textContent = thisTime.toString();
   }
 }
 
 function stopAndClear() {
   const currentTimer = document.getElementById(ID);
-  currentTimer.innerText = '';
+  currentTimer.textContent = '';
   clearInterval(theInterval);
 }
 
@@ -55,19 +78,19 @@ function startTimer(amount, id = 'timer') {
 }
 
 // converts seconds to minutes. For example 65 seconds to 1:05
-function convertSeconds(theSeconds) {
-  const min = Math.floor(theSeconds / 60);
-  const seconds = theSeconds % 60;
+function convertSeconds() {
+  const minutes = Math.floor(thisTime / 60);
+  const seconds = thisTime % 60;
 
-  if (min > 1 && seconds < 10) {
-    return min + ':' + '0' + seconds;
-  } else {
+  if (minutes >= 1 && seconds < 10) {
+    return (`${minutes}:0${seconds}`);
+  }
+  else if (minutes >= 1 && seconds >= 10) {
+    return (`${minutes}:${seconds}`);
+  }
+  else {
     return seconds;
   }
-
-  // else if (min > 1 && seconds ) {
-  //     return min + ':' + seconds;
-  // }
 }
 
 /* pauses the clock on the second that its said
@@ -76,10 +99,17 @@ and once it is it clears the interval */
 
 function pause(pointToPause) {
   setInterval(function() {
-    pausing(pointToPause);
+    pause(pointToPause);
   }, 1000);
 
   if (thisTime === pointToPause) {
+    setPausePoint(pointToPause);
     clearInterval(theInterval);
   }
+}
+
+function resume () {
+  setTimer(pausePoint);
+  timeIt();
+  theInterval = setInterval(timeIt, 1000);
 }
