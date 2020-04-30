@@ -98,18 +98,15 @@ checks every second to see if its at the pausing point
 and once it is it clears the interval */
 
 function pause(pointToPause) {
-  setInterval(function() {
-    pause(pointToPause);
+ let pausingInterval = setInterval(function() {
+   if (thisTime === pointToPause) {
+     clearInterval(theInterval);
+     clearInterval(pausingInterval);
+     setPausePoint(pointToPause);
+   }
   }, 1000);
-
-  if (thisTime === pointToPause) {
-    setPausePoint(pointToPause);
-    clearInterval(theInterval);
-  }
 }
 
-function resume () {
-  setTimer(pausePoint);
-  timeIt();
-  theInterval = setInterval(timeIt, 1000);
-}
+/* function resume () {
+  startTimer(pausePoint)
+} */
