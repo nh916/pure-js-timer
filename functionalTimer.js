@@ -23,12 +23,10 @@ function setID(idGiven) {
 
 function setMinutesAndSeconds(choice) {
   if (choice === true) {
-   minutesAndSeconds = true;
-  }
-  else if (choice === false) {
+    minutesAndSeconds = true;
+  } else if (choice === false) {
     minutesAndSeconds = false;
-  }
-  else {
+  } else {
     console.error('setMinutesAndSeconds has a boolean parameter');
   }
 }
@@ -52,8 +50,7 @@ function timeIt() {
 
   if (minutesAndSeconds) {
     timer.textContent = convertSeconds();
-  }
-  else {
+  } else {
     timer.textContent = thisTime.toString();
   }
 }
@@ -84,11 +81,9 @@ function convertSeconds() {
 
   if (minutes >= 1 && seconds < 10) {
     return (`${minutes}:0${seconds}`);
-  }
-  else if (minutes >= 1 && seconds >= 10) {
+  } else if (minutes >= 1 && seconds >= 10) {
     return (`${minutes}:${seconds}`);
-  }
-  else {
+  } else {
     return seconds;
   }
 }
@@ -98,12 +93,12 @@ checks every second to see if its at the pausing point
 and once it is it clears the interval */
 
 function pause(pointToPause) {
- let pausingInterval = setInterval(function() {
-   if (thisTime === pointToPause) {
-     clearInterval(theInterval);
-     clearInterval(pausingInterval);
-     setPausePoint(pointToPause);
-   }
+  const pausingInterval = setInterval(function() {
+    if (thisTime === pointToPause) {
+      clearInterval(theInterval);
+      clearInterval(pausingInterval);
+      setPausePoint(pointToPause);
+    }
   }, 1000);
 }
 
