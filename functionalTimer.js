@@ -4,7 +4,7 @@
 let thisTime;
 let theInterval;
 let ID;
-let minutesAndSeconds = false
+let minutesAndSeconds = false;
 let pausePoint;
 
 /* sets the amount of thisTime and adds 1 to it
@@ -23,13 +23,13 @@ function setID(idGiven) {
 
 function setMinutesAndSeconds(choice) {
   if (choice === true) {
-   minutesAndSeconds = true
+   minutesAndSeconds = true;
   }
   else if (choice === false) {
-    minutesAndSeconds = false
+    minutesAndSeconds = false;
   }
   else {
-    console.error("setMinutesAndSeconds has a boolean parameter")
+    console.error('setMinutesAndSeconds has a boolean parameter');
   }
 }
 

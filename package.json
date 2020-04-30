@@ -2,7 +2,7 @@
   "name": "functional-timer",
   "version": "1.0.0",
   "description": "Simple Javascript Timer made with functions",
-  "main": "functional-timer.js",
+  "main": "functionalTimer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
