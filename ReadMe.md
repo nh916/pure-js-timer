@@ -21,12 +21,12 @@ By defualt the ID is set to timer but it can be overwritten to any other ID the 
 amount is the amount the developer wants the timer to run for. Example 30 seconds
 ### Example:
 ```javascript
-      start_timer(90);
+      startTimer(90);
 ```
 *or*
 
 ```javascript
-      start_timer(90, "timer");
+      startTimer(90, "timer");
 ```
 
 id is the id of the element that the developer wants to put the timer int
@@ -68,7 +68,7 @@ A better practice would be to include it with script and source tags.*
     var ID;
     var its0;
 
-    // sets the amount of This_time and adds 1 to it for the user to it started from 30 and not 29 
+    // sets the amount of thisTime and adds 1 to it for the user to it started from 30 and not 29 
     function set_timer(timer) {
         This_time = timer + 1;
     }
