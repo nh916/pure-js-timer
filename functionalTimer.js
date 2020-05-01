@@ -34,13 +34,14 @@ function setMinutesAndSeconds(choice) {
   }
 }
 
-/* sets at which second the timer should be paused*/
+/* sets at which second the timer should be paused
+* if the parameter is incorrect it gives a specific message for easy fix*/
 function setPausePoint(thePausePoint) {
-    if (typeof (thePausePoint) === 'number') {
-        pausePoint = thePausePoint;
-    } else {
-        console.error('setPausePoint needs a number parameter to know on what second it should stop');
-    }
+  if (typeof (thePausePoint) === 'number') {
+    pausePoint = thePausePoint;
+  } else {
+    console.error('setPausePoint needs a number parameter to know on what second it should stop');
+  }
 }
 
 /* uses the id from global var
@@ -93,7 +94,7 @@ function convertSeconds() {
   if (minutes >= 1 && seconds < 10) {
     return (`${minutes}:0${seconds}`);
   }
-/* if it has a minutes and seconds are in double digits t
+  /* if it has a minutes and seconds are in double digits t
   then  return seconds */
   else if (minutes >= 1 && seconds >= 10) {
     return (`${minutes}:${seconds}`);
@@ -118,7 +119,7 @@ function pause(pointToPause) {
   }, 1000);
 }
 
-    /* todo this needs to wait on the pause and then resume.
+/* todo this needs to wait on the pause and then resume.
            Currently it just resumes instantly
            as the rest of the code starts which results in errors */
 /* function resume () {
