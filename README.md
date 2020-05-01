@@ -69,7 +69,7 @@ let ID;
 let minutesAndSeconds = false;
 let pausePoint;
 
-/* sets the amount of thisTime and adds 1 to it
+/* sets the amount of globalTimerInSeconds and adds 1 to it
 for the user to see that it started from 30 and not 29
 @param {timer} num The amount the timer should run for
 @return null/none
@@ -126,7 +126,7 @@ function stopAndClear() {
 
 /* starts the timer
 Takes the amount that the developer wants the timer to run for
-takes the ID that the developer wants to put the timer inside of
+takes the elementID that the developer wants to put the timer inside of
 when the timer hits 0 it stops itself */
 
 function startTimer(amount, id = 'timer') {
