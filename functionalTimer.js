@@ -5,7 +5,6 @@ let globalTimerInSeconds;
 let theTimerInterval;
 let elementID;
 let minutesAndSeconds = false;
-let pausePoint;
 
 /* sets the amount of globalTimerInSeconds and adds 1 to it
 for the user to see that it started from 30 and not 29
@@ -13,6 +12,9 @@ for the user to see that it started from 30 and not 29
 @return null/none
 */
 function setTimer(timer) {
+  if (typeof (timer) !== "number") {
+    console.error("setTimer takes in integer for the timer amount. Example: startTimer(30)")
+  }
   globalTimerInSeconds = timer + 1;
 }
 
@@ -38,7 +40,7 @@ function setMinutesAndSeconds(choice) {
 * if the parameter is incorrect it gives a specific message for easy fix*/
 function setPausePoint(thePausePoint) {
   if (typeof (thePausePoint) === 'number') {
-    pausePoint = thePausePoint;
+    pause(thePausePoint);
   } else {
     console.error('setPausePoint needs a number parameter to know on what second it should stop');
   }
@@ -77,7 +79,6 @@ function stopAndClear() {
 Takes the amount that the developer wants the timer to run for
 takes the elementID that the developer wants to put the timer inside of
 when the timer hits 0 it stops itself */
-
 function startTimer(amount, id = 'timer') {
   setTimer(amount);
   setID(id);
@@ -107,21 +108,15 @@ function convertSeconds() {
 
 /* pauses the clock on the second that its said
 checks every second to see if its at the pausing point
-and once it is it clears the interval */
-
+and once it is it clears the interval
+if the timer wants to resume, it then has to be restarted
+pause can be called directly, but the setPausePoint setter should be used
+*/
 function pause(pointToPause) {
   const pausingInterval = setInterval(function() {
     if (globalTimerInSeconds === pointToPause) {
       clearInterval(theTimerInterval);
       clearInterval(pausingInterval);
-      setPausePoint(pointToPause);
     }
   }, 1000);
 }
-
-/* todo this needs to wait on the pause and then resume.
-           Currently it just resumes instantly
-           as the rest of the code starts which results in errors */
-/* function resume () {
-  startTimer(pausePoint)
-} */

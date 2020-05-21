@@ -15,8 +15,8 @@ Feel free to contribute to it, and make it better. Looking forward to seeing oth
 ## ```start_timer(amount)``` *or* ```start_timer(amount, id = "timer")```
 
 
-**takes an (int timer amount, String id)**
-By defualt the ID is set to timer but it can be overwritten to any other ID the developer wants to use
+**takes an (timer amount:int, id:String)**
+By defualt the ID is set to "timer" but it can be overwritten to any other ID the developer wants to use
 
 amount is the amount the developer wants the timer to run for. Example 30 seconds
 ### Example:
@@ -44,12 +44,47 @@ id is the id of the element that the developer wants to put the timer int
 ## ```stopAndClear();```
 **It takes nothing and whenever it is called it stops the timer and erases the timer from screen by replacing inside of the div with empty string ""**
 
-# Demo
-copied and pasted straight from demo.html
 
-*The functional timer is shown being copied and pasted into the html, but this is only for demonstration purposes.
+Everything here can be found under demoScrip_imported.html for how the functional-timer can be used
+demo.html shows the entire js code in the html file and its use
+finctionalTimer is the full JS file 
+
+
+# Demo
+##functional-js use demo
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>functional-timer demo imported</title>
+    <script src="functionalTimer.js"></script>
+</head>
+
+<body>
+    <div id="timer"></div>
+</body>
+<script>
+    //if true 72 seconds will appear as 1:12 and count down
+    // if false it will appear as 72 seconds and count down
+    setMinutesAndSeconds(true);
+    
+    //starts the timer with 72 seconds and put results in div with the id of timer
+    startTimer(72);
+    
+    //timer is set to pause when the timer reaches 30 seconds
+    setPausePoint(30);
+</script>
+</html>
+```
+
+
+
+*The functional-timer is shown being copied and pasted into the html, but this is only for demonstration purposes.
 A better practice would be to include it with script and source tags.*
 
+#functional-timer JS code and use demo
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -63,26 +98,30 @@ A better practice would be to include it with script and source tags.*
 
 <!--functional-timer javascript part-->
 <script type="text/javascript">
-let thisTime;
-let theInterval;
-let ID;
+let globalTimerInSeconds;
+let theTimerInterval;
+let elementID;
 let minutesAndSeconds = false;
-let pausePoint;
 
 /* sets the amount of globalTimerInSeconds and adds 1 to it
 for the user to see that it started from 30 and not 29
-@param {timer} num The amount the timer should run for
-@return null/none
+
 */
 function setTimer(timer) {
-  thisTime = timer + 1;
+  if (typeof (timer) !== "number") {
+    console.error("setTimer takes in integer for the timer amount. Example: startTimer(30)")
+  }
+  globalTimerInSeconds = timer + 1;
 }
 
 // sets Id
 function setID(idGiven) {
-  ID = idGiven;
+  elementID = idGiven;
 }
 
+/* setter for minutes and seconds.
+* if true the timer will use minutes and seconds like 1:10
+* otherwise it will use 70 seconds */
 function setMinutesAndSeconds(choice) {
   if (choice === true) {
     minutesAndSeconds = true;
@@ -93,8 +132,14 @@ function setMinutesAndSeconds(choice) {
   }
 }
 
+/* sets at which second the timer should be paused
+* if the parameter is incorrect it gives a specific message for easy fix*/
 function setPausePoint(thePausePoint) {
-  pausePoint = thePausePoint;
+  if (typeof (thePausePoint) === 'number') {
+    pause(thePausePoint);
+  } else {
+    console.error('setPausePoint needs a number parameter to know on what second it should stop');
+  }
 }
 
 /* uses the id from global var
@@ -103,24 +148,26 @@ function setPausePoint(thePausePoint) {
  once it hits 0 it stops */
 
 function timeIt() {
-  thisTime--;
-  const timer = document.getElementById(ID);
+  globalTimerInSeconds--;
+  const timer = document.getElementById(elementID);
 
-  if (thisTime === 0) {
-    clearInterval(theInterval);
+  if (globalTimerInSeconds === 0) {
+    clearInterval(theTimerInterval);
   }
 
   if (minutesAndSeconds) {
     timer.textContent = convertSeconds();
   } else {
-    timer.textContent = thisTime.toString();
+    timer.textContent = globalTimerInSeconds.toString();
   }
 }
 
+/* will stop the timer and erase whatever that was in the element
+by setting the textContent to an empty String '' */
 function stopAndClear() {
-  const currentTimer = document.getElementById(ID);
+  const currentTimer = document.getElementById(elementID);
+  clearInterval(theTimerInterval);
   currentTimer.textContent = '';
-  clearInterval(theInterval);
 }
 
 
@@ -128,55 +175,47 @@ function stopAndClear() {
 Takes the amount that the developer wants the timer to run for
 takes the elementID that the developer wants to put the timer inside of
 when the timer hits 0 it stops itself */
-
 function startTimer(amount, id = 'timer') {
   setTimer(amount);
   setID(id);
   timeIt();
-  theInterval = setInterval(timeIt, 1000);
+  theTimerInterval = setInterval(timeIt, 1000);
 }
 
 // converts seconds to minutes. For example 65 seconds to 1:05
 function convertSeconds() {
-  const minutes = Math.floor(thisTime / 60);
-  const seconds = thisTime % 60;
+  const minutes = Math.floor(globalTimerInSeconds / 60);
+  const seconds = globalTimerInSeconds % 60;
 
+  // if it has minutes but seconds are in single digits add a zero
   if (minutes >= 1 && seconds < 10) {
     return (`${minutes}:0${seconds}`);
-  } else if (minutes >= 1 && seconds >= 10) {
+  }
+  /* if it has a minutes and seconds are in double digits t
+  then  return seconds */
+  else if (minutes >= 1 && seconds >= 10) {
     return (`${minutes}:${seconds}`);
-  } else {
+  }
+  // if it does not have minutes then return seconds
+  else {
     return seconds;
   }
 }
 
 /* pauses the clock on the second that its said
 checks every second to see if its at the pausing point
-and once it is it clears the interval */
-
+and once it is it clears the interval
+if the timer wants to resume, it then has to be restarted
+pause can be called directly, but the setPausePoint setter should be used
+*/
 function pause(pointToPause) {
   const pausingInterval = setInterval(function() {
-    if (thisTime === pointToPause) {
-      clearInterval(theInterval);
+    if (globalTimerInSeconds === pointToPause) {
+      clearInterval(theTimerInterval);
       clearInterval(pausingInterval);
-      setPausePoint(pointToPause);
     }
   }, 1000);
 }
-
 </script>
-<!--end of functional-timer-->
-
-<body>
-    <div id="timer">90</div>
-</body>
-
-<!--calling functional-javascript-->
-<script type="text/javascript">
-    startTimer(90);
-
-</script>
-
 </html>
-
 ```
