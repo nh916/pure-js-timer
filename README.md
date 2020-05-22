@@ -72,10 +72,10 @@ finctionalTimer is the full JS file
     //if true 72 seconds will appear as 1:12 and count down
     // if false it will appear as 72 seconds and count down
     setMinutesAndSeconds(true);
-    
+
     //starts the timer with 72 seconds and put results in div with the id of timer
     startTimer(72);
-    
+
     //timer is set to pause when the timer reaches 30 seconds
     setPausePoint(30);
 </script>
