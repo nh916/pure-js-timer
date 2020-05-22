@@ -8,8 +8,8 @@ The code can be refactored to be improved and more efficient, I just have not ha
 
 
 *pure-js-timer* was originally going to be called *functional-timer* because the timer is made completely from functions, and it would make a fun play on words, but seeing that name was already taken the second good name I came up with that was more descriptive was pure-js-timer.
-
-
+<br />
+<br />
 
 
 Feel free to contribute to it, and make it better. Looking forward to seeing others using it and contributing to it!
@@ -19,10 +19,9 @@ Feel free to contribute to it, and make it better. Looking forward to seeing oth
 # functions
 
 ## ```start_timer(amount)``` *or* ```start_timer(amount, id = "timer")```
-
-
 **takes an (timer amount:int, id:String)**
-By defualt the ID is set to "timer" but it can be overwritten to any other ID the developer wants to use
+
+By defualt the ID is set to "timer" but it can be overwritten to any other div ID the developer wants to use
 
 amount is the amount of seconds the developer wants the timer to run for. Example 30 seconds
 ### Example:
@@ -41,24 +40,38 @@ id is the id of the element that the developer wants to put the timer into
       <div id="timer"></div>
 ```
 
-## ```convert_seconds(s);```
+## ```setMinutesAndSeconds(choice:boolean);```
 **converts seconds to minutes. For example 65 seconds to 1:05**
+<br />
+this function takes a *boolean* argument
+<br />
+to convert to minutes and seconds the developer must set the option setMinutesAndSeconds(true)
+<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; by default it is false and will display in seconds
 
-## ```pause(point_to_pause);```
-**takes a second time, where the developer wants the timer to pause on.**
+
+## ```setPausePoint(point_to_pause:int);```
+**takes a time in seconds, where the developer wants the timer to pause on.**
+<br />
+setPausePoint(30)
+<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at 30 seconds, the timer will pause
 
 ## ```stopAndClear();```
-**It takes nothing and whenever it is called it stops the timer and erases the timer from screen by replacing inside of the div with empty string ""**
+**whenever it is called it stops the timer and erases the timer from screen by replacing inside of the div with empty string ""**
+<br />
+*takes no arguments*
 
 
-Everything here can be found under demoScrip_imported.html for how the pure-js-timer can be used.
+a simple demo can be found under demoScrip_imported.html for how the pure-js-timer can be used.
 
 demo.html shows the entire js code in the html file and its use
-finctionalTimer is the full JS file 
+<br />
+pure-js-timer is the full JS file
 
 
 # Demo
-##functional-js use demo
+##simple demo of pure-js-timer in use
 ```html
 <!DOCTYPE html>
 <html lang="en">
