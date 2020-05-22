@@ -6,9 +6,13 @@ I made this for my own project and saw that I could not find something easy to u
 
 The code can be refactored to be improved and more efficient, I just have not had the chance to do that. If I get a chance I will be adding more comments and more documentation to make it very simple to understand. 
 
-Feel free to contribute to it, and make it better. Looking forward to seeing others using it and contributing to it!
 
 *pure-js-timer* was originally going to be called *functional-timer* because the timer is made completely from functions, and it would make a fun play on words, but seeing that name was already taken the second good name I came up with that was more descriptive was pure-js-timer.
+
+
+
+
+Feel free to contribute to it, and make it better. Looking forward to seeing others using it and contributing to it!
 
 *MIT License*
 
