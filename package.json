@@ -1,8 +1,8 @@
 {
-  "name": "functional-timer",
+  "name": "pure-js-timer",
   "version": "1.0.0",
   "description": "Simple Javascript Timer made with functions",
-  "main": "functionalTimer.js",
+  "main": "pure-js-timer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "timer",
-    "functional-timer"
+    "functional-timer",
+    "pure-js-timer"
   ],
   "author": "",
   "license": "MIT",
