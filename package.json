@@ -1,6 +1,6 @@
 {
   "name": "pure-js-timer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple Javascript Timer made with functions",
   "main": "pure-js-timer.js",
   "scripts": {
